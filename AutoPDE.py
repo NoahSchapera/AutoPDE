@@ -24,7 +24,6 @@ def collectData(wavelength_select, wavelength, wavelength_index, voltage_400, vo
     for v in voltage_steps:
         input("Set voltage to " + v + " volts : ENTER")
         os.system("~/PDEDAQ/PDEDAQ -of " +"../"+ SN+"/"+SIPM+"_"+wl_choice+"nm_"+v+"V_"+date+ " -w " + wl_index_choice + " -inputrange 1")
-        input("Running... Press enter on cmd window when prompted : ENTER")
         print(" ")
 
 
