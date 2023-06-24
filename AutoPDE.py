@@ -6,7 +6,7 @@ Created on Fri Jun 23 13:07:07 2023
 """
 import os
 
-def collectData(wavelength_select, wavelength, wavelength_index, voltage_400, voltage_500_589):
+def collectData(wavelength_select, wavelength, wavelength_index, voltage_400, voltage_500_589, testing):
     
     wl_choice = wavelength[wavelength_select]
     wl_index_choice = wavelength_index[wavelength_select]
@@ -23,7 +23,10 @@ def collectData(wavelength_select, wavelength, wavelength_index, voltage_400, vo
     print(" ")
     for v in voltage_steps:
         input("Set voltage to " + v + " volts : ENTER")
-        os.system("~/PDEDAQ/PDEDAQ -of " +"../"+ SN+"/"+SIPM+"_"+wl_choice+"nm_"+v+"V_"+date+ " -w " + wl_index_choice + " -inputrange 1")
+        if testing == True:
+            print("~/PDEDAQ/PDEDAQ -of " +"../"+ SN+"/"+SIPM+"_"+wl_choice+"nm_"+v+"V_"+date+ " -w " + wl_index_choice + " -inputrange 1")
+        else:
+            os.system("~/PDEDAQ/PDEDAQ -of " +"../"+ SN+"/"+SIPM+"_"+wl_choice+"nm_"+v+"V_"+date+ " -w " + wl_index_choice + " -inputrange 1")
         print(" ")
 
 
@@ -31,6 +34,8 @@ print('Welcome to the AutoPDE workflow')
 print("V1.0 - 23 / 06 / 2023")
 print("by Eden Schapera")
 
+
+testing = True
 
 date = "23062023"
 SIPM = "S14161-6050HS-04"
@@ -49,10 +54,10 @@ wl_input = int(input("Select wavelength: 400nm (0), 500nm (1), 589nm (2), all (3
 
 if wl_input == 3:
     for wl in range(len(wavelength)):
-        collectData(wl, wavelength, wavelength_index, voltage_400, voltage_500_589)
+        collectData(wl, wavelength, wavelength_index, voltage_400, voltage_500_589, testing)
         
 else: 
-    collectData(wl_input, wavelength, wavelength_index, voltage_400, voltage_500_589)
+    collectData(wl_input, wavelength, wavelength_index, voltage_400, voltage_500_589, testing)
         
      
 
