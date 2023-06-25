@@ -24,9 +24,9 @@ def collectData(wavelength_select, wavelength, wavelength_index, voltage_400, vo
     for v in voltage_steps:
         input("Set voltage to " + v + " volts : ENTER")
         if testing == True:
-            print("~/PDEDAQ/PDEDAQ -of " +"../"+ SN+"/"+SIPM+"_"+wl_choice+"nm_"+v+"V_"+date+ " -w " + wl_index_choice + " -inputrange 1")
+            print("~/PDEDAQ/PDEDAQ -of " +"../"+ SN+"/"+SIPM+"_"+SN+"_"+wl_choice+"nm_"+v+"V_"+date+ " -w " + wl_index_choice + " -inputrange 1")
         else:
-            os.system("~/PDEDAQ/PDEDAQ -of " +"../"+ SN+"/"+SIPM+"_"+wl_choice+"nm_"+v+"V_"+date+ " -w " + wl_index_choice + " -inputrange 1")
+            os.system("~/PDEDAQ/PDEDAQ -of " +"../"+ SN+"/"+SIPM+"_"+SN+"_"+wl_choice+"nm_"+v+"V_"+date+ " -w " + wl_index_choice + " -inputrange 1")
         print(" ")
 
 #initializing variables
